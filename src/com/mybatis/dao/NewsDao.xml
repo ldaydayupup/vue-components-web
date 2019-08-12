@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 包名 -->
+<mapper namespace="com.mybatis.dao.NewsDao">
+	<!-- 结果名不一致 -->
+	<resultMap type="com.news.pojo.News" id="news">
+		<result property="ntname" column="tname"/>
+	</resultMap>
+	<!-- List<News> getNewsByTid(int tid, int row, int size) -->
+	<select id="getNewsByTid" parameterType="String" resultType="com.news.pojo.News">
+		SELECT * FROM news WHERE ntid = #{0} LIMIT #{1},#{2}
+	</select>
+	<!-- public List<News> SelectNews(); -->
+	<select id="SelectNews" resultType="com.news.pojo.News">
+		select * from news
+	</select>
+	<!-- public List<News> getAllNews(int row, int size); -->
+	<select id="getAllNews" parameterType="String" resultType="com.news.pojo.News">
+		SELECT * FROM news LIMIT #{0},#{1}
+	</select>
+	<!-- public int getAllNewsCount(int tid);
+		select count(*) from news where ntid=?
+	 -->
+	<select id="getAllNewsCount" resultType="int">
+		select count(*) from news 
+		<if test="tid != null">
+			where ntid = #{tid}
+		</if>
+	</select>
+	<!-- public News selectNewsByNid(int nid); -->
+	<select id="selectNewsByNid" parameterType="String" resultType="com.news.pojo.News">
+		SELECT * FROM news WHERE nid=#{0}
+	</select>
+	<!-- public int addTname(String tname); -->
+	<insert id="addTname">
+		insert into topic(tname) value(#{tname})
+	</insert>
+	<!-- public int addNews(News news); -->
+	<insert id="addNews" parameterType="com.news.pojo.News">
+		insert into news(ntid,ntitle,nauthor,nsummary,ncreateDate,ncontent) value(#{ntid},#{ntitle},#{nauthor},#{nsummary},#{ncreateDate},#{ncontent})
+	</insert>
+</mapper>

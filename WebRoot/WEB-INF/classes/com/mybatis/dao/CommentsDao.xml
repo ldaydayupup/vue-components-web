@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 包名 -->
+<mapper namespace="com.mybatis.dao.CommentsDao">
+	<!-- public int saveComments(int cnid,String ccontent,String cip,String cauthor,Date cdate); -->
+	<insert id="saveComments">
+		insert into comments(cnid,ccontent,cip,cauthor,cdate) value(#{0},#{1},#{2},#{3},#{4})
+	</insert>
+	<!-- public List<Comments> getCommentsByNid(int cnid); -->
+	<select id="getCommentsByNid" parameterType="com.news.pojo.Comments" resultType="com.news.pojo.Comments">
+		SELECT * FROM comments WHERE cnid=#{cnid}
+	</select>
+	<!-- public int updateTopicByTid(int tid,String tname); -->
+	<update id="updateTopicByTid" parameterType="com.news.pojo.Comments">
+		update topic set tname =#{tname} where tid=#{tid}
+	</update>
+	<!-- public int deleteTopicByTid(int tid); -->
+	<delete id="deleteTopicByTid">
+		delete from topic where tid=#{tid}
+	</delete>
+</mapper>

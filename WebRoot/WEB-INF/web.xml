@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name></display-name>	
+  <welcome-file-list>
+  <!-- 请求/index对应的servlet  IndexHttpServlet -->
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- 注册登录servlet -->
+  <servlet>
+ 	<servlet-name>UserHttpServlet</servlet-name>
+    <servlet-class>com.news.servlet.UserHttpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>UserHttpServlet</servlet-name>
+  <url-pattern>/user</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>loginServlet</servlet-name>
+  	<servlet-class>com.news.servlet.loginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>loginServlet</servlet-name>
+  	<url-pattern>/loginServlet</url-pattern>
+  </servlet-mapping>
+  <!-- 首页servlet -->
+  <servlet>
+  	<servlet-name>IndexHttpServlet</servlet-name>
+  	<servlet-class>com.news.servlet.IndexHttpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>IndexHttpServlet</servlet-name>
+	<url-pattern>/index</url-pattern>
+ </servlet-mapping>
+ <servlet>
+ <servlet-name>NewsServlet</servlet-name>
+ <servlet-class>com.news.servlet.NewsServlet</servlet-class>
+ </servlet>
+  <servlet>
+    <servlet-name>NewsCommentsServlet</servlet-name>
+    <servlet-class>com.news.servlet.NewsCommentsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ManageServlet</servlet-name>
+    <servlet-class>com.news.servlet.ManageServlet</servlet-class>
+  </servlet>
+
+
+ <servlet-mapping>
+ <servlet-name>NewsServlet</servlet-name>
+ <url-pattern>/news</url-pattern>
+ </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NewsCommentsServlet</servlet-name>
+    <url-pattern>/newsComments</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ManageServlet</servlet-name>
+    <url-pattern>/news/manage</url-pattern>
+  </servlet-mapping>
+</web-app>
